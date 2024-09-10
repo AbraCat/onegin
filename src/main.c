@@ -19,9 +19,9 @@ int main(int argc, char* argv[])
         return 1;
     }
     
-    char* text = NULL;
+    struct TextData data;
 
-    int error = readFile(fin, &text);
+    int error = readFile(fin, &data);
     if (error)
     {
         printf("Error: %s", strerror(error));
@@ -30,10 +30,9 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    int n_lines = getNLines(text);
-    char** lines = getLines(text, n_lines);
+    getText(&data);
 
-    if (lines == NULL)
+    if (data.text == NULL)
     {
         perror("Error");
         fclose(fin);
@@ -41,11 +40,11 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    qsort(lines, n_lines, sizeof(char*), myStrcmp);
-    writeLines(fout, lines, n_lines);
+    qsort(data.text, data.n_lines, sizeof(char*), myStrcmp);
+    writeLines(fout, data.text, data.n_lines);
 
-    free(text);
-    free(lines);
+    free(data.buf);
+    free(data.text);
     fclose(fin);
     fclose(fout);
     return 0;

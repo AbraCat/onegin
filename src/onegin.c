@@ -25,29 +25,29 @@ long fileSize(FILE *file, int* error)
     *error = 0;
     return siz;
 }
-int readFile(FILE* fp, char** s)
+int readFile(FILE* fp, struct TextData* td)
 {
-    assert(fp != NULL && s != NULL);
+    assert(fp != NULL && td != NULL);
 
     int error = 0;
     long siz = fileSize(fp, &error);
     if (error == 1)
     {
-        *s = NULL;
+        td->buf = NULL;
         return error;
     }
-    *s = calloc(siz, sizeof(char));
-    if (*s == NULL)
+    td->buf = calloc(siz, sizeof(char));
+    if (td->buf == NULL)
         return errno;
-    fread(*s, sizeof(char), siz, fp);
+    fread(td->buf, sizeof(char), siz, fp);
     if (ferror(fp))
     {
-        *s = NULL;
+        td->buf = NULL;
         return EIO;
     }
     return 0;
 }
-int getNLines(const char* s)
+void getNLines(struct TextData *td)
 {
     // assert(s != NULL && n_lines != NULL);
 
@@ -68,35 +68,41 @@ int getNLines(const char* s)
     // }
     // return s;
 
-    assert(s != NULL);
+    assert(td != NULL);
 
-    int n_lines = 0;
+    td->n_lines = 0;
+    char* s = td->buf;
     for (; *s != '\0'; ++s)
     {
         if (*s == '\n')
-            ++n_lines;
+            td->n_lines++;
     }
     if (s[-1] != '\n')
-        ++n_lines;
-    return n_lines;
+        td->n_lines++;
+    return td->n_lines;
 }
-char** getLines(char* text, int n_lines)
+void getLines(struct TextData *td)
 {
-    assert(text != NULL);
+    assert(td != NULL);
 
-    char** lines = calloc(n_lines, sizeof(char*));
-    if (lines == NULL)
+    td->text = calloc(td->n_lines, sizeof(char*));
+    if (td->text == NULL)
         return NULL;
-    lines[0] = text++;
-    for (int i = 1; i != n_lines; ++text)
+    char* s = td->buf;
+    td->text[0] = s++;
+    for (int i = 1; i != td->n_lines; ++s)
     {
-        if (text[-1] == '\n')
+        if (s[-1] == '\n')
         {
-            text[-1] = '\0';
-            lines[i++] = text;
+            s[-1] = '\0';
+            td->text[i++] = s;
         }
     }
-    return lines;
+}
+void getText(struct TextData *td)
+{
+    getNLines(td);
+    getLines(td);
 }
 void writeLines(FILE* fp, const char** lines, int n_lines)
 {
