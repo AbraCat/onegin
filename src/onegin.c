@@ -36,15 +36,19 @@ int readFile(FILE* fp, struct TextData* td)
         td->buf = NULL;
         return error;
     }
-    td->buf = calloc(siz, sizeof(char));
+    td->buf = calloc(siz + 2, sizeof(char));
     if (td->buf == NULL)
         return errno;
-    fread(td->buf, sizeof(char), siz, fp);
+    int n_read = fread(td->buf, sizeof(char), siz, fp);
+    printf("readFile(): siz = %d, n_read = %d\n", siz, n_read);
     if (ferror(fp))
     {
         td->buf = NULL;
         return EIO;
     }
+    if (td->buf[n_read - 1] != '\n')
+        td->buf[n_read++] = '\n';
+    td->buf[n_read] = '\0';
     return 0;
 }
 void getNLines(struct TextData *td)
@@ -77,25 +81,32 @@ void getNLines(struct TextData *td)
         if (*s == '\n')
             td->n_lines++;
     }
-    if (s[-1] != '\n')
-        td->n_lines++;
-    return td->n_lines;
 }
 void getLines(struct TextData *td)
 {
     assert(td != NULL);
 
-    td->text = calloc(td->n_lines, sizeof(char*));
+    td->text = calloc(td->n_lines, sizeof(struct String));
     if (td->text == NULL)
-        return NULL;
+        return;
     char* s = td->buf;
-    td->text[0] = s++;
-    for (int i = 1; i != td->n_lines; ++s)
+    struct String str = {s, 0};
+    td->text[0] = str;
+    int j = -1, new_str = 1;
+    for (int i = 0; i != td->n_lines; ++s)
     {
-        if (s[-1] == '\n')
+        if (new_str)
         {
-            s[-1] = '\0';
-            td->text[i++] = s;
+            str.s = s;
+            new_str = 0;
+        }
+        if (*s == '\n')
+        {
+            *s = '\0'; // remove
+            str.len = i - j;
+            j = i;
+            td->text[i++] = str;
+            new_str = 1;
         }
     }
 }
@@ -104,12 +115,14 @@ void getText(struct TextData *td)
     getNLines(td);
     getLines(td);
 }
-void writeLines(FILE* fp, const char** lines, int n_lines)
+void writeLines(FILE* fp, struct TextData* td)
 {
-    assert(fp != NULL && lines != NULL);
+    assert(fp != NULL && td != NULL);
     
-    for (int i = 0; i != n_lines; ++i)
-        fprintf(fp, "%s\n", lines[i]);
+    printf("writeLines():\n");
+    printf("%p\n", td->text[0].s);
+    for (int i = 0; i < td->n_lines; ++i)
+        fprintf(fp, "%s\n", td->text[i].s);
 }
 int myStrcmp(const void* p1, const void* p2)
 {

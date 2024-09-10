@@ -11,7 +11,7 @@ struct String
 struct TextData
 {
     char* buf;
-    char** text;
+    struct String* text;
     int n_lines;
     int* lens;
 };
@@ -21,5 +21,5 @@ int readFile(FILE* fp, struct TextData* td);
 void getNLines(struct TextData *td);
 void getLines(struct TextData *td);
 void getText(struct TextData *td);
-void writeLines(FILE* fp, const char** lines, int n_lines);
+void writeLines(FILE* fp, struct TextData* td);
 int myStrcmp(const void* p1, const void* p2);
