@@ -13,7 +13,6 @@ struct TextData
     char* buf;
     struct String* text;
     int n_lines;
-    int* lens;
 };
 
 long fileSize(FILE *file, int* error);
@@ -23,3 +22,5 @@ void getLines(struct TextData *td);
 void getText(struct TextData *td);
 void writeLines(FILE* fp, struct TextData* td);
 int myStrcmp(const void* p1, const void* p2);
+int myStrcmpR(const void* p1, const void* p2);
+void freeText(struct TextData* td);

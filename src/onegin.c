@@ -40,7 +40,6 @@ int readFile(FILE* fp, struct TextData* td)
     if (td->buf == NULL)
         return errno;
     int n_read = fread(td->buf, sizeof(char), siz, fp);
-    printf("readFile(): siz = %d, n_read = %d\n", siz, n_read);
     if (ferror(fp))
     {
         td->buf = NULL;
@@ -89,22 +88,23 @@ void getLines(struct TextData *td)
     td->text = calloc(td->n_lines, sizeof(struct String));
     if (td->text == NULL)
         return;
-    char* s = td->buf;
+    char *s = td->buf, *l = td->buf - 1;
     struct String str = {s, 0};
     td->text[0] = str;
-    int j = -1, new_str = 1;
+    int new_str = 1;
     for (int i = 0; i != td->n_lines; ++s)
     {
         if (new_str)
         {
+            //printf("new_str: i = %d, j = %d\n", i, j);
             str.s = s;
             new_str = 0;
         }
         if (*s == '\n')
         {
-            *s = '\0'; // remove
-            str.len = i - j;
-            j = i;
+            //printf("new_str: i = %d, j = %d\n", i, j);
+            str.len = s - l;
+            l = s;
             td->text[i++] = str;
             new_str = 1;
         }
@@ -119,16 +119,45 @@ void writeLines(FILE* fp, struct TextData* td)
 {
     assert(fp != NULL && td != NULL);
     
-    printf("writeLines():\n");
-    printf("%p\n", td->text[0].s);
+    char* buf = calloc(1000, sizeof(char));
     for (int i = 0; i < td->n_lines; ++i)
-        fprintf(fp, "%s\n", td->text[i].s);
+    {
+        sscanf(td->text[i].s, "%[^\n]s", buf);
+        //fprintf(fp, "%s %d\n", td->text[i].s, td->text[i].len);
+        fprintf(fp, "%s %d\n", buf, td->text[i].len);
+    }
+    free(buf);
 }
+// int myStrcmp(const void* p1, const void* p2)
+// {
+//     char **s1 = (char**)p1, **s2 = (char**)p2;
+
+//     assert(s1 != NULL && s2 != NULL && *s1 != NULL && *s2 != NULL);
+
+//     return strcmp(*s1, *s2);
+// }
 int myStrcmp(const void* p1, const void* p2)
 {
-    char **s1 = (char**)p1, **s2 = (char**)p2;
+    assert(p1 != NULL && p2 != NULL);
 
-    assert(s1 != NULL && s2 != NULL && *s1 != NULL && *s2 != NULL);
+    struct String *sl = p1, *sr = p2;
+    char *l = sl->s, *r = sr->s;
+    for(; *l != '\n' && *l == *r; ++l, ++r);
+    return *l - *r;
+}
+int myStrcmpR(const void* p1, const void* p2)
+{
+    assert(p1 != NULL && p2 != NULL);
 
-    return strcmp(*s1, *s2);
+    struct String *sl = p1, *sr = p2;
+    char *l = sl->s + sl->len - 1, *r = sr->s + sr->len - 1;
+    for(; l != sl->s - 1 && r != sr->s - 1 && *l == *r; --l, --r);
+    if (l == sl->s - 1) l += sl->len + 1;
+    if (r == sr->s - 1) r += sr->len + 1;
+    return *l - *r;
+}
+void freeText(struct TextData* td)
+{
+    free(td->buf);
+    free(td->text);
 }
