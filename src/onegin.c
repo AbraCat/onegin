@@ -2,6 +2,10 @@
 
 #include <onegin.h>
 
+int isletter(char c)
+{
+    return (c >= 65 && c <= 90) || (c >= 97 && c <= 122);
+}
 long fileSize(FILE *file, int* error)
 {
     assert(file != NULL);
@@ -88,25 +92,17 @@ void getLines(struct TextData *td)
     td->text = calloc(td->n_lines, sizeof(struct String));
     if (td->text == NULL)
         return;
-    char *s = td->buf, *l = td->buf - 1;
+    char *s = td->buf;
     struct String str = {s, 0};
-    td->text[0] = str;
     td->maxlen = 0;
-    int new_str = 1;
     for (int i = 0; i != td->n_lines; ++s)
     {
-        if (new_str)
-        {
-            str.s = s;
-            new_str = 0;
-        }
         if (*s == '\n')
         {
-            str.len = s - l;
+            str.len = s - str.s;
             td->maxlen = str.len > td->maxlen ? str.len : td->maxlen;
-            l = s;
             td->text[i++] = str;
-            new_str = 1;
+            str.s = s + 1;
         }
     }
 }
@@ -140,6 +136,7 @@ void writeLines(FILE* fp, struct TextData* td)
     char* buf = calloc(td->maxlen, sizeof(char));
     for (int i = 0; i < td->n_lines; ++i)
     {
+        if (td->text[i].len == 0) continue;
         sscanf(td->text[i].s, "%[^\n]s", buf);
         fprintf(fp, "%s\n", buf);
     }
@@ -158,18 +155,33 @@ int myStrcmp(const struct String* s1, const struct String* s2)
     assert(s1 != NULL && s2 != NULL);
 
     char *l = s1->s, *r = s2->s;
-    for(; *l != '\n' && *l == *r; ++l, ++r);
-    return *l - *r;
+    while (*l != '\n' && !isletter(*l)) ++l;
+    while (*r != '\n' && !isletter(*r)) ++r;
+    while (*l != '\n' && *l == *r)
+    {
+        ++l;
+        ++r;
+        while (*l != '\n' && !isletter(*l)) ++l;
+        while (*r != '\n' && !isletter(*r)) ++r;
+    }
+    return (*l == '\n' ? '\0' : *l) - (*r == '\n' ? '\0' : *r);
 }
 int myStrcmpR(const struct String* s1, const struct String* s2)
 {
     assert(s1 != NULL && s2 != NULL);
 
-    char *l = s1->s + s1->len - 1, *r = s2->s + s2->len - 1;
-    for(; l != s1->s - 1 && r != s2->s - 1 && *l == *r; --l, --r);
-    if (l == s1->s - 1) l += s1->len + 1;
-    if (r == s2->s - 1) r += s2->len + 1;
-    return *l - *r;
+    char *le = s1->s - 1, *re = s2->s - 1;
+    char *l = le + s1->len, *r = re + s2->len;
+    while (l != le && !isletter(*l)) --l;
+    while (r != re && !isletter(*r)) --r;
+    while (l != le && r != re && *l == *r)
+    {
+        --l;
+        --r;
+        while (l != le && !isletter(*l)) --l;
+        while (r != re && !isletter(*r)) --r;
+    }
+    return (l == le ? '\0' : *l) - (r == re ? '\0' : *r);
 }
 void freeText(struct TextData* td)
 {

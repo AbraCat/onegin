@@ -4,19 +4,6 @@
 
 #include <onegin.h>
 
-/*
-fdsfd
-plkiuh
-bbb
-wwwcz
-rerwe
-;
-ccc
-zxcdws
-aaa
-kmkmn
-qazxswedcxde
-*/
 int main(int argc, char* argv[])
 {
     const char *in_name = ".\\txt\\input.txt", *out_name = ".\\txt\\output.txt";

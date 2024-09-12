@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <assert.h>
 
-typedef int (*voidcmp_t)(const void*, const void*);
-typedef int (*strcmp_t)(const struct String, const struct String);
-
 struct String
 {
     char *s;
@@ -18,6 +15,10 @@ struct TextData
     int n_lines, maxlen;
 };
 
+typedef int (*voidcmp_t)(const void*, const void*);
+typedef int (*strcmp_t)(const struct String, const struct String);
+
+int isletter(char c);
 long fileSize(FILE *file, int* error);
 int readFile(FILE* fp, struct TextData* td);
 void getNLines(struct TextData *td);
