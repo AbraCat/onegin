@@ -17,10 +17,8 @@ aaa
 kmkmn
 qazxswedcxde
 */
-
 int main(int argc, char* argv[])
 {
-
     const char *in_name = ".\\txt\\input.txt", *out_name = ".\\txt\\output.txt";
     FILE *fin = fopen(in_name, "r"), *fout = fopen(out_name, "w");
 
@@ -39,7 +37,7 @@ int main(int argc, char* argv[])
     int error = readFile(fin, &data);
     if (error)
     {
-        printf("Error: %s", strerror(error));
+        perror("Error");
         fclose(fin);
         fclose(fout);
         return 1;
@@ -55,17 +53,15 @@ int main(int argc, char* argv[])
 
     getText(&data);
 
-    qsort(data.text, data.n_lines, sizeof(struct String), (int (*)(const void*, const void*))myStrcmp);
+    myQsort(data.text, data.n_lines, sizeof(struct String), (voidcmp_t)myStrcmp);
     writeLines(fout, &data);
     fprintf(fout, "\n%s\n\n", "--------------------------------");
-    qsort(data.text, data.n_lines, sizeof(struct String), (int (*)(const void*, const void*))myStrcmpR);
+    qsort(data.text, data.n_lines, sizeof(struct String), (voidcmp_t)myStrcmpR);
     writeLines(fout, &data);
     fprintf(fout, "\n%s\n\n", "--------------------------------");
     fprintf(fout, "%s", data.buf);
 
-    //freeText(&data);
-    free(data.text);
-    free(data.buf);
+    freeText(&data);
     fclose(fin);
     fclose(fout);
     return 0;
