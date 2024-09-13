@@ -38,7 +38,13 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    getText(&data);
+    if(getText(&data))
+    {
+        perror("Error");
+        fclose(fin);
+        fclose(fout);
+        return 1;
+    }
 
     myQsort(data.text, data.n_lines, sizeof(struct String), (voidcmp_t)myStrcmp);
     writeLines(fout, &data);

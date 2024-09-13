@@ -8,7 +8,7 @@ int ispunc(char c)
 }
 long fileSize(FILE *file, int* error)
 {
-    assert(file != NULL);
+    assert(file != NULL && error != NULL);
 
     if (fseek(file, 0L, SEEK_END))
     {
@@ -56,25 +56,6 @@ int readFile(FILE* fp, struct TextData* td)
 }
 void getNLines(struct TextData *td)
 {
-    // assert(s != NULL && n_lines != NULL);
-
-    // int i = 0;
-    // for (int c = 0; (c = getc(fp)) != EOF; ++i)
-    // {
-    //     s[i] = c;
-    //     if (s[i] == '\n')
-    //     {
-    //         ++*n_lines;
-    //         s[i] = '\0';
-    //     }
-    // }
-    // if (s[i - 1] != '\0')
-    // {
-    //     ++*n_lines;
-    //     s[i] = '\0';
-    // }
-    // return s;
-
     assert(td != NULL);
 
     td->n_lines = 0;
@@ -85,13 +66,13 @@ void getNLines(struct TextData *td)
             td->n_lines++;
     }
 }
-void getLines(struct TextData *td)
+int getLines(struct TextData *td)
 {
     assert(td != NULL);
 
     td->text = calloc(td->n_lines, sizeof(struct String));
     if (td->text == NULL)
-        return;
+        return 1;
     char *s = td->buf;
     struct String str = {s, 0};
     td->maxlen = 0;
@@ -105,14 +86,19 @@ void getLines(struct TextData *td)
             str.s = s + 1;
         }
     }
+    return 0;
 }
-void getText(struct TextData *td)
+int getText(struct TextData *td)
 {
+    assert(td != NULL);
+
     getNLines(td);
-    getLines(td);
+    return getLines(td);
 }
 void bubbleSort(void* ptr, size_t count, size_t size, voidcmp_t cmp)
 {
+    assert(ptr != NULL);
+
     char *a = ptr, tmp = 0;
     for (int i = count - 2; i >= 0; --i)
     {
@@ -132,15 +118,19 @@ void bubbleSort(void* ptr, size_t count, size_t size, voidcmp_t cmp)
 }
 void myQsort(void* ptr, size_t count, size_t size, voidcmp_t cmp)
 {
-    if (count == 1) return;
+    assert(ptr != NULL);
+
+    if (count == 1 || count == 0) return;
+
     char tmp = 0;
     char *pt = ptr;
     char *l = ptr, *r = (char*)pt + (count - 1) * size, *piv = pt + (count - 1) * size;
-    if (count == 0) exit(1);
+
     while (l < r && cmp(l, piv) < 0)
         l += size;
     while (l < r && cmp(r, piv) > 0)
         r -= size;
+
     while (l < r)
     {
         for (int i = 0; i < size; ++i)
@@ -149,8 +139,10 @@ void myQsort(void* ptr, size_t count, size_t size, voidcmp_t cmp)
             l[i] = r[i];
             r[i] = tmp;
         }
+
         l += size;
         r -= size;
+
         while (l < r && cmp(l, piv) < 0)
             l += size;
         while (l < r && cmp(r, piv) > 0)
@@ -175,6 +167,7 @@ void myQsort(void* ptr, size_t count, size_t size, voidcmp_t cmp)
 void writeLines(FILE* fp, struct TextData* td)
 {
     assert(fp != NULL && td != NULL);
+
     char* buf = calloc(td->maxlen, sizeof(char));
     for (int i = 0; i < td->n_lines; ++i)
     {
@@ -227,6 +220,8 @@ int myStrcmpR(const struct String* s1, const struct String* s2)
 }
 void freeText(struct TextData* td)
 {
+    assert(td != NULL);
+    
     free(td->buf);
     free(td->text);
 }
