@@ -1,4 +1,150 @@
+        ... ...
 --------
+--------
+--------
+     < ...
+--------
+--------
+        ... ...
+--------
+--------
+        ... ...
+--------
+     {100}
+     {101}
+     {102}
+     {103}
+     {104}
+     {105}
+     {106}
+     {107}
+     {108}
+     {109}
+     {110}
+     {111}
+     {112}
+     {113}
+     {114}
+     {115}
+     {116}
+     {117}
+     {118}
+     {119}
+     {120}
+     {121}
+     {122}
+     {123}
+     {124}
+     {125}
+     {126}
+     {127}
+     {128}
+     {129}
+     {130}
+     {131}
+     {132}
+     {133}
+     {134}
+     {135}
+     {136}
+     {137}
+     {138}
+     {139}
+     {140}
+     {141}
+     {142}
+     {143}
+     {144}
+     {145}
+     {146}
+     {147}
+     {148}
+     {149}
+     {150}
+     {151}
+     {152}
+     {153}
+     {154}
+     {155}
+     {156}
+     {157}
+     {158}
+     {159}
+     {160}
+     {161}
+     {162}
+     {163}
+     {164}
+     {165}
+     {166}
+     {167}
+     {168}
+     {169}
+     {170}
+     {171}
+     {172}
+     {173}
+     {174}
+     {175}
+     {176}
+     {177}
+     {178}
+     {179}
+     {180}
+     {181}
+     {182}
+     {183}
+     {184}
+     {185}
+     {186}
+     {187}
+     {188}
+     {189}
+     {190}
+     {191}
+     {192}
+     {193}
+     {194}
+     {195}
+     {196}
+     {197}
+     {198}
+     {199}
+     ... >2
+     {200}
+     {201}
+     {202}
+     {203}
+     {204}
+     {205}
+     {206}
+     {207}
+     {208}
+     {209}
+     {210}
+     {211}
+     {212}
+     {213}
+     {214}
+     {215}
+     {216}
+     {217}
+     {218}
+     {219}
+     {220}
+     {221}
+     {222}
+     {223}
+     {224}
+     {225}
+     {226}
+     {227}
+     {228}
+     {229}
+     {230}
+     {231}
+     {232}
+     {233}
      {35}
      {36}
      {37}
@@ -27,7 +173,6 @@
      {60}
      {61}
      {62}
---------
      {63}
      {64}
      {65}
@@ -45,13 +190,10 @@
      {77}
      {78}
      {79}
-     < ...
-     ... >2
      {80}
      {81}
      {82}
      {83}
---------
      {84}
      {85}
      {86}
@@ -68,148 +210,6 @@
      {97}
      {98}
      {99}
-     {100}
-     {101}
-     {102}
-     {103}
-     {104}
-     {105}
-     {106}
-     {107}
-     {108}
---------
-     {109}
-     {110}
-     {111}
-     {112}
-     {113}
-     {114}
-     {115}
-     {116}
-     {117}
-     {118}
-     {119}
-     {120}
-     {121}
-     {122}
-     {123}
-     {124}
-     {125}
-     {126}
-     {127}
-     {128}
-     {129}
-     {130}
-     {131}
---------
-     {132}
-     {133}
-     {134}
-     {135}
-     {136}
-     {137}
-     {138}
-     {139}
-     {140}
-     {141}
-     {142}
-     {143}
-     {144}
-     {145}
-     {146}
-     {147}
-     {148}
-     {149}
-     {150}
-     {151}
-     {152}
-        ... ...
-     {153}
-     {154}
---------
-     {155}
-     {156}
-     {157}
-     {158}
-     {159}
-     {160}
-     {161}
-     {162}
-     {163}
-     {164}
-     {165}
-     {166}
-     {167}
-     {168}
-     {169}
-     {170}
-     {171}
-     {172}
-     {173}
-     {174}
-     {175}
-     {176}
-     {177}
---------
-     {178}
-     {179}
-     {180}
-     {181}
-     {182}
-     {183}
-     {184}
-     {185}
-     {186}
-     {187}
-     {188}
-     {189}
-     {190}
-     {191}
-     {192}
-     {193}
-     {194}
-     {195}
-     {196}
-     {197}
-     {198}
-     {199}
-     {200}
-     {201}
-     {202}
-     {203}
-     {204}
---------
-     {205}
-        ... ...
-     {206}
-     {207}
-     {208}
-     {209}
-     {210}
-     {211}
-     {212}
-     {213}
-     {214}
-     {215}
-     {216}
-        ... ...
-     {217}
-     {218}
-     {219}
-     {220}
-     {221}
-     {222}
-     {223}
-     {224}
-     {225}
-     {226}
-     {227}
-     {228}
-     {229}
-     {230}
-     {231}
-     {232}
-     {233}
      A backward look is fraught with danger;
      A ball: the joy of every guest!
      ``Abandon hope for evermore.''9
@@ -1272,6 +1272,7 @@ Chapter Two
      Tanya thanks each one with a phrase.
      Tanya to all her kin. My sorrow
      Tanya today goes hurrying out
+     Tatyana3 was her name... I own it,
      Tatyana asked. The children all
      Tatyana breathed on the cold pane,
      Tatyana dear, with you I'm weeping:
@@ -1313,7 +1314,6 @@ Chapter Two
      Tatyana's rites are not for me.
      Tatyana struggles to run out --
      Tatyana turned with thirsting soul:
-     Tatyana3 was her name... I own it,
      Tatyana watched the moon, and floated
      Tatyana went with them, and sped
      ``Tell me, our neighbours, are they thriving?
@@ -1398,9 +1398,9 @@ Chapter Two
      There's powdery snow up to her knees;
      There's vacancies in plenty there.''
      There too, he honoured, hotly weeping,
+     There was -- --,10 so notorious
      There was a period when cold-blooded
      There was a pine-branch downward straying
-     There was -- --,10 so notorious
      There, with epigrammatic neatness,
      There you're entirely sure of finding
      The rustic sage, in that apartment,
@@ -1656,10 +1656,10 @@ Chapter Two
         XLII
         XLIII
         XLIII
+        XLIII
+        XLIII
+        XLIII
         XLIII7
-        XLIII
-        XLIII
-        XLIII
         XLIV
         XLIV
         XLIV
@@ -1856,27 +1856,27 @@ Chapter Two
         XXXVI
         XXXVI
         XXXVI
+        XXXVI
+        XXXVI
+        XXXVI
+        XXXVI
         XXXVI6
-        XXXVI
-        XXXVI
-        XXXVI
-        XXXVI
+        XXXVII
+        XXXVII
+        XXXVII
         XXXVII
         XXXVII
         XXXVII
         XXXVII
         < XXXVII7
-        XXXVII
-        XXXVII
-        XXXVII
         XXXVIII
         XXXVIII
         XXXVIII
         XXXVIII
         XXXVIII
         XXXVIII
-        (XXXVIII) XXXIX
         (XXXVIII,2) XXXIX
+        (XXXVIII) XXXIX
      Yes, spleen was waiting like a sentry,
      Yes, youth divines, in giddy madness,
      Yet Tanya's note made its impression
@@ -3133,6 +3133,7 @@ Chapter Two
      fly to my corner like a dart,
      foes, friends and loves, their voice is stilled.
      folly for me to interfere
+     for 1808: his obligations
      for God's sake, that will do. But, brother,
      for Olga, on the spreading lawn,
      for Olga's beauty, Lensky gives
@@ -3160,7 +3161,6 @@ Chapter Two
      for him a lofty stair. His shade,
      for him, at night, before the indulgence
      for him, the objective on life's chart
-     for 1808: his obligations
      for his old courses to be changed.
      for honour, a straightforward pride.
      for hours alone; she walked and walked...
@@ -5940,217 +5940,243 @@ Chapter Two
 --------------------------------
 
 --------
-     {35}
-     {36}
-     {37}
-     {38}
-     {39}
-     {40}
-     {41}
-     {42}
-     {43}
-     {44}
-     {45}
-     {46}
-     {47}
-     {48}
-     {49}
-     {50}
-     {51}
-     {52}
-     {53}
-     {54}
-     {55}
-     {56}
-     {57}
-     {58}
-     {59}
-     {60}
-     {61}
-     {62}
+        ... ...
 --------
-     {63}
-     {64}
-     {65}
-     {66}
-     {67}
-     {68}
-     {69}
-     {70}
-     {71}
-     {72}
-     {73}
-     {74}
-     {75}
-     {76}
-     {77}
-     {78}
-     {79}
+--------
      < ...
-     ... >2
-     {80}
-     {81}
-     {82}
-     {83}
 --------
-     {84}
-     {85}
-     {86}
-     {87}
-     {88}
-     {89}
-     {90}
-     {91}
-     {92}
-     {93}
-     {94}
-     {95}
-     {96}
-     {97}
-     {98}
-     {99}
+--------
+        ... ...
+--------
+        ... ...
+--------
+--------
      {100}
-     {101}
-     {102}
-     {103}
-     {104}
-     {105}
-     {106}
-     {107}
-     {108}
---------
-     {109}
-     {110}
-     {111}
-     {112}
-     {113}
-     {114}
-     {115}
-     {116}
-     {117}
-     {118}
-     {119}
-     {120}
-     {121}
-     {122}
-     {123}
-     {124}
-     {125}
-     {126}
-     {127}
-     {128}
-     {129}
-     {130}
-     {131}
---------
-     {132}
-     {133}
-     {134}
-     {135}
-     {136}
-     {137}
-     {138}
-     {139}
-     {140}
-     {141}
-     {142}
-     {143}
-     {144}
-     {145}
-     {146}
-     {147}
-     {148}
-     {149}
-     {150}
-     {151}
-     {152}
-        ... ...
-     {153}
-     {154}
---------
-     {155}
-     {156}
-     {157}
-     {158}
-     {159}
-     {160}
-     {161}
-     {162}
-     {163}
-     {164}
-     {165}
-     {166}
-     {167}
-     {168}
-     {169}
-     {170}
-     {171}
-     {172}
-     {173}
-     {174}
-     {175}
-     {176}
-     {177}
---------
-     {178}
-     {179}
-     {180}
-     {181}
-     {182}
-     {183}
-     {184}
-     {185}
-     {186}
-     {187}
-     {188}
-     {189}
-     {190}
-     {191}
-     {192}
-     {193}
-     {194}
-     {195}
-     {196}
-     {197}
-     {198}
-     {199}
      {200}
-     {201}
-     {202}
-     {203}
-     {204}
---------
-     {205}
-        ... ...
-     {206}
-     {207}
-     {208}
-     {209}
+     {110}
      {210}
-     {211}
-     {212}
-     {213}
-     {214}
-     {215}
-     {216}
-        ... ...
-     {217}
-     {218}
-     {219}
+     {120}
      {220}
-     {221}
-     {222}
-     {223}
-     {224}
-     {225}
-     {226}
-     {227}
-     {228}
-     {229}
+     {130}
      {230}
+     {40}
+     {140}
+     {50}
+     {150}
+     {60}
+     {160}
+     {70}
+     {170}
+     {80}
+     {180}
+     {90}
+     {190}
+     {101}
+     {201}
+     {111}
+     {211}
+     cartoonist-pencils of Saint-Priest;11
+     {121}
+     {221}
+     {131}
      {231}
+     {41}
+     {141}
+     {51}
+     {151}
+     {61}
+     {161}
+     {71}
+     {171}
+     {81}
+     {181}
+     {91}
+     {191}
+     but I'm allergic to the North...1
+     the jug of bilberry wine is seen.1
+     in order daily, chez Very,1
+     ... >2
+     {102}
+     {202}
+     {112}
+     {212}
+     with amber pipes from Tsaregrad;12
+     {122}
+     {222}
+     {132}
      {232}
+     {42}
+     {142}
+     {52}
+     {152}
+     {62}
+     {162}
+     {72}
+     {172}
+     {82}
+     {182}
+     {92}
+     {192}
+     and melancholy as Svetlana,2
+     shine out and bring the world to bliss. >2
+     {103}
+     {203}
+     {113}
+     {213}
+     could not conceive how solemn Grimm13
+     {123}
+     {223}
+     {133}
      {233}
+     {43}
+     {143}
+     {53}
+     {153}
+     {63}
+     {163}
+     {73}
+     {173}
+     {83}
+     {183}
+     {93}
+     {193}
+     the lover of Julie Wolmar,3
+     her steppeland charms into a rout.3
+     {104}
+     {204}
+     {114}
+     {214}
+     Madame de Staël, Bichat,13 Tissot,14
+     {124}
+     {224}
+     {134}
+     {44}
+     {144}
+     {54}
+     {154}
+     {64}
+     {164}
+     {74}
+     {174}
+     {84}
+     {184}
+     {94}
+     {194}
+     He looks, and answers: ``Agafon.''4
+     {105}
+     {205}
+     {115}
+     {215}
+     he read of course the sceptic Bayle15
+     {125}
+     {225}
+     {35}
+     {135}
+     {45}
+     {145}
+     {55}
+     {155}
+     {65}
+     {165}
+     {75}
+     {175}
+     {85}
+     {185}
+     {95}
+     {195}
+     I too -- when I recall Svetlana5
+     and Malek Adel,4 de Linar,5
+     {106}
+     {206}
+     {116}
+     {216}
+     and all the works of Fontanelle16 --
+     {126}
+     {226}
+     {36}
+     {136}
+     {46}
+     {146}
+     {56}
+     {156}
+     {66}
+     {166}
+     {76}
+     {176}
+     {86}
+     {186}
+     {96}
+     {196}
+        XXXVI6
+     the fools who sparkle far and wide,6
+     Clarissa, Julie, or Delphine6 --
+     He was a good and simple barin;6
+     {107}
+     {207}
+     {117}
+     {217}
+     {127}
+     {227}
+     {37}
+     {137}
+     {47}
+     {147}
+     {57}
+     {157}
+     {67}
+     {167}
+     {77}
+     {177}
+     {87}
+     {187}
+     {97}
+     {197}
+        XLIII7
+        < XXXVII7
+     it had its epigram-potential7...
+     {108}
+     {208}
+     {118}
+     {218}
+     {128}
+     {228}
+     {38}
+     {138}
+     {48}
+     {148}
+     {58}
+     {158}
+     {68}
+     {168}
+     {78}
+     {178}
+     {88}
+     {188}
+     {98}
+     {198}
+     and the derivative Knyazhnín:8
+     {109}
+     {209}
+     {119}
+     {219}
+     {129}
+     {229}
+     {39}
+     {139}
+     {49}
+     {149}
+     {59}
+     {159}
+     {69}
+     {169}
+     {79}
+     {179}
+     {89}
+     {189}
+     {99}
+     {199}
+     ``Abandon hope for evermore.''9
+     two sisters who'd received the initial,9
         I
         I
         I
@@ -6173,7 +6199,6 @@ Chapter Two
         LIII
         LIII
         XLIII
-        XLIII7
         XLIII
         XLIII
         XLIII
@@ -6278,7 +6303,6 @@ Chapter Two
         XXXVII
         XXXVII
         XXXVII
-        < XXXVII7
         XXXVII
         XXXVII
         XII
@@ -6343,7 +6367,6 @@ Chapter Two
         XXVI
         XXVI
         XXVI
-        XXXVI6
         XXXVI
         XXXVI
         XXXVI
@@ -6475,6 +6498,7 @@ Chapter Two
         X
         X
         X
+        (IX,2) X
         IX
         IX
         IX
@@ -6506,8 +6530,8 @@ Chapter Two
         XXXIX
         XXXIX
         XXXIX
-        (XXXVIII) XXXIX
         (XXXVIII,2) XXXIX
+        (XXXVIII) XXXIX
         LX
         XX
         XX
@@ -6517,7 +6541,6 @@ Chapter Two
         XX
         XX
         XX
-        (IX,2) X
         (VIII,2 IX,) X
         XXX
         XXX
@@ -6533,8 +6556,6 @@ Chapter Two
           Moscow, loved daughter of Russia,
      Friends of my Ruslan and Lyudmila,
      in Adam Smith was his diploma;
-     I too -- when I recall Svetlana5
-     and melancholy as Svetlana,2
           thou, my Svetlana!
      then sudden fear attacked Tatyana...
         Onegin's Letter to Tatyana
@@ -6633,7 +6654,6 @@ Chapter Two
      His wife, just like Tatyana, had
      on Richardson gone raving mad.
      to drive the swooning senses mad;
-     with amber pipes from Tsaregrad;12
      you're really going? Well, I'm sad.
      his transports, and the marriage-bed
      and doctors, he'd have died in bed.
@@ -7432,7 +7452,6 @@ Chapter Two
      that I prefer to Champagne's tide;
      And now the door is opened wide,
      raised nose and shoulders high and wide
-     the fools who sparkle far and wide,6
      of every funeral far and wide;
      tranquillity, and solitude --
      set to well-known children's glee:
@@ -7657,7 +7676,6 @@ Chapter Three
      fresh from the cot, an infant pickle,
      he laughs -- they all begin to chuckle;
      He nods -- they start to fuss and truckle;
-     and all the works of Fontanelle16 --
           Nasce una gente a cui 'l morir non dole.
      too pale, too thin, but on the whole
      for happiness -- that alien role.
@@ -7682,7 +7700,6 @@ Chapter Three
      solemn, too long compelled to throttle
      And the sly baseness, fit to throttle,
      dons of Epicurean rule,
-     he read of course the sceptic Bayle15
      he killed eight years in such a style,
      that even so my wretched style
      in sensible old-fashioned style.
@@ -7783,10 +7800,10 @@ Chapter Three
      (on orders which of course presume
      that thievish mouths cannot consume
      with the pink glow the snows assume
+     I own it: tender Parny's12 rhyme
      the strain of Tasso's octave-rhyme!
      the youthful votary of rhyme
      I need to rest from all this rhyme:
-     I own it: tender Parny's12 rhyme
      the girls sing out the ancient rhyme:
      love's melting dreams shall fill my rhyme,
 Chapter One
@@ -7819,7 +7836,6 @@ Chapter One
      and yet by Vergil or Racine
      and wore his dressing-gown to dine.
      Vladimir Lensky. Quick, let's dine!
-     Clarissa, Julie, or Delphine6 --
      with three roan horses in a line
      may then amuse my glad decline.
      a novel on the established line
@@ -7966,7 +7982,6 @@ Chapter One
      is mincing manners -- nothing more.
      Of Lensky's fate they said no more --
      self-portraits only -- furthermore
-     ``Abandon hope for evermore.''9
      Since when is this?'' ``Two years or more.''
      I kept in mind an ancient store
      you were the first ones he forswore;
@@ -8266,8 +8281,8 @@ Chapter Five
      of many distant lands he sang
      the bliss that fills me when your throbbing,
      a suite of elegies that, throbbing,
-     How heavy, and how near to sobbing,
      So you, inspired Yazýkov,4 sobbing
+     How heavy, and how near to sobbing,
      each news of her he'd been imbibing --
      his style breathed love, and not the gibing
      had fortune blest me by prescribing
@@ -8699,11 +8714,11 @@ Chapter Five
      that lady the hostess was greeting,
      there never fails a kindly greeting,
      a story that still wants completing;
+     that there his friend Kaverin's5 waiting;
      Hours pass; no answer; waiting, waiting.
      the gallery claps -- it's bored with waiting --
      Zaretsky, engineer-in-waiting,
      We too shall find our hour is waiting;
-     that there his friend Kaverin's5 waiting;
      flows and reverberates. Reciting,
      Vladimir shuts the book, for writing
      Three whole hours, at the least accounting,
@@ -8786,6 +8801,7 @@ Chapter Five
      So went his sermon. Almost dying,
      And yet, although it's past conveying,
      and some were even testifying
+     and captive girls, by Salgir20 lying.
      dead ash sets no more sparks a-flying;
      In fact one day a note came flying
      By now the shades of night are flying,
@@ -8793,7 +8809,6 @@ Chapter Five
      through heaven's expanse serenely flying,
      by mist of tears, without replying
      Two weeks the matchmaker was plying
-     and captive girls, by Salgir20 lying.
      But he's mistaken: Eugene's lying
      yes, in that spring-time, in low-lying
      soon, infidelity proved cloying,
@@ -8928,7 +8943,6 @@ Chapter Five
      a seedling fallen in the earth.
      so fires of spring will bring to birth
      fragments of poems from the North,
-     but I'm allergic to the North...1
      There once I too strolled back and forth:
      the abstracted poet would bring forth
      only to Eugene showed their worth;
@@ -9069,17 +9083,15 @@ Chapter Five
      a novel, vague and superficial,
      over his neighbour's plain memorial,
      Lensky, restored to his manorial
-     two sisters who'd received the initial,9
      But let's return to our essential,
-     it had its epigram-potential7...
      of other's thought -- a splendid goal;
      be doomed to feel it: there's one goal
      his thoughts were on a distant goal:
      his Strasbourg pie, or point a moral,
      But he could draw a joking moral,
      so heartless and so detrimental,
-     and to the vision of those mortal
      to bring across Lepage's4 mortal
+     and to the vision of those mortal
      she can't; Evgeny's pushed the portal,
      By now the sledge is at the portal --
      I find myself no longer equal;
@@ -9327,7 +9339,6 @@ Chapter Five
      of evening, and those tears, the balm
      those walks amid the gloom and calm
      they while away the morning's calm.
-     could not conceive how solemn Grimm13
      Tatyana! it's addressed... to whom?
      despite herself, is Lensky's doom;
      a humble cross, in woodland gloom,
@@ -9399,7 +9410,6 @@ Chapter Five
      and on the flames let fall unseen
      so virtuous that, no sooner seen,
      the hare who from afar has seen
-     the jug of bilberry wine is seen.1
      and once forbidden fruit is seen,
      harboured by maidens of thirteen!
      a note from Lensky; in between
@@ -9522,20 +9532,17 @@ Chapter Seven
      the spring of honour, and the pin
      on which the world is doomed to spin.
      ``A humble sinner, Dimitry Larin,
-     He was a good and simple barin;6
      drives home -- and plunging deeper in,
      Buyánov, my vivacious cousin,
      so often from her Moscow cousin
      on liquor, and on hay brought in,
      and entice a fellow in
      When we draw a fellow in,
-     and the derivative Knyazhnín:8
      on a fast stallion from the Don,
      leads Olga and Tatyana on
      In duels a pedantic don,
      by country freedom, rightful pardon
      since, through the mist that dreams arise on,
-     He looks, and answers: ``Agafon.''4
      swaying the artless, waiting on
      he saw no point in staying on,
      yet people's malice and suspicion
@@ -9735,8 +9742,8 @@ Chapter Seven
      But come, thou youthful inspiration,
      A moment earlier, inspiration
      bitter-sweet glory's inspiration,
-     with careful schemes of decoration
      of his Ochákov7 decoration!
+     with careful schemes of decoration
      with fond caress? whose adoration
      Though belles had lost his adoration,
      When progress and amelioration
@@ -10177,8 +10184,6 @@ Chapter Two
      when we see him from afar,
      had been for ever borne off far
      no, Tanya's more endearing far.
-     the lover of Julie Wolmar,3
-     and Malek Adel,4 de Linar,5
      and soon they bring her... a guitar
      In the dark sky, a shooting star
      and parted from her by their star.
@@ -10320,8 +10325,8 @@ Chapter Two
      When we've retreated to the banner
      While under the connubial banner
      exercised, under lucre's banner,
-     of passion's out, and its whole manner
      a novel in Lafontaine's8 manner...
+     of passion's out, and its whole manner
      ``Here in the winter he'd have dinner
      he fed on hope's deceptive dinner;
      I'll feed the journalists for dinner
@@ -10934,7 +10939,6 @@ Chapter Four
      it's not in him to bring me bliss.''
      evoke for you a sombre bliss;
      doubted of it, so lived in bliss.
-     shine out and bring the world to bliss. >2
      the earlier griefs are what I miss.
      look here, as a provincial miss
      can lean on faith, who can dismiss
@@ -11329,7 +11333,6 @@ Chapter Eight
      two pines have tangled at the root;
      shall not attack my lily's root;
      no spark of fun in all its rot!
-     Madame de Staël, Bichat,13 Tissot,14
      to pass the evening. No? then tot
      and cared not what his daughter kept
      a young girl's looking-glass is kept.
@@ -11442,7 +11445,6 @@ Chapter Eight
      the hat, the scowling brow, the chest
      Oh, I've no strength... I'm tired, my chest...
      sent at the Colonel's own behest.
-     cartoonist-pencils of Saint-Priest;11
      startling the ingenuous with a jest,
      young poet, be for ever blest!''
      let's go together, take a rest...
@@ -11510,7 +11512,6 @@ Chapter Eight
      With that, in tears, and quite worn out,
      Tatyana struggles to run out --
      to the Larins' had caused a spout
-     her steppeland charms into a rout.3
      have pushed their frontiers further out,
      throw meadows into muddy rout,
      the household boys in noisy rout;
@@ -11822,17 +11823,16 @@ Chapter Six
      but Tanya found she couldn't cry:
      all egoistical and dry,
      in flowers of spring it's drinking dry:
-     in order daily, chez Very,1
      Alas, Eugene beyond all query
      How long he'd been here, was her query,
      have your fill of revelry!
      before him roast beef, red and gory,
+     I meant to paint, with Alban's8 glory,
      fortune, and dignity, and glory,
      ``as sung of old, in years of glory,
      and leave no faint footprint of glory...
      there Didelot10 crowned himself with glory:
      ``To me, Onegin, all this glory
-     I meant to paint, with Alban's8 glory,
      and pate, Strasbourg's deathless glory,
      once more Corneille's majestic story;
      at fifty, would prolong the story

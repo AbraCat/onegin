@@ -43,9 +43,11 @@ int main(int argc, char* argv[])
     myQsort(data.text, data.n_lines, sizeof(struct String), (voidcmp_t)myStrcmp);
     writeLines(fout, &data);
     fprintf(fout, "\n%s\n\n", "--------------------------------");
-    qsort(data.text, data.n_lines, sizeof(struct String), (voidcmp_t)myStrcmpR);
+
+    myQsort(data.text, data.n_lines, sizeof(struct String), (voidcmp_t)myStrcmpR);
     writeLines(fout, &data);
     fprintf(fout, "\n%s\n\n", "--------------------------------");
+
     fprintf(fout, "%s", data.buf);
 
     freeText(&data);

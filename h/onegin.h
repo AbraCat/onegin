@@ -18,12 +18,13 @@ struct TextData
 typedef int (*voidcmp_t)(const void*, const void*);
 typedef int (*strcmp_t)(const struct String, const struct String);
 
-int isletter(char c);
+int ispunc(char c);
 long fileSize(FILE *file, int* error);
 int readFile(FILE* fp, struct TextData* td);
 void getNLines(struct TextData *td);
 void getLines(struct TextData *td);
 void getText(struct TextData *td);
+void bubbleSort(void* ptr, size_t count, size_t size, voidcmp_t cmp);
 void myQsort(void* ptr, size_t count, size_t size, voidcmp_t cmp);
 void writeLines(FILE* fp, struct TextData* td);
 int myStrcmp(const struct String* s1, const struct String* s2);
