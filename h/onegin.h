@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 
+#include <sort.h>
+
 struct String
 {
     char *str;
@@ -16,13 +18,12 @@ struct TextData
     int n_lines, maxlen;
 };
 
-int ispunc(char chr);
-int fileSize(FILE *file, unsigned long *siz);
-int readFile(FILE* file, struct TextData* data);
-void getNLines(struct TextData *data);
-int getLines(struct TextData *data);
-int getText(struct TextData *data);
-void writeLines(FILE* file, struct TextData* data);
+int fileSize(FILE *file, long *siz);
+int readFile(FILE* file, char** bufptr);
+void getNLines(char* buf, int* n_lines);
+int getLines(char* buf, int* n_lines, struct String** textptr, int* maxlen);
+void writeLines(FILE* file, struct String* text, int n_lines);
+void sortAndWrite(FILE* file, struct TextData* data, voidcmp_f cmp);
 int myStrcmp(const struct String* str1, const struct String* str2);
 int myStrcmpR(const struct String* str1, const struct String* str2);
 void freeText(struct TextData* data);

@@ -1,14 +1,11 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <errno.h>
+#include <ctype.h>
 
 #include <onegin.h>
 
-int ispunc(char chr)
-{
-    return (chr < '0' || chr > '9') && (chr < 'A' || chr > 'Z') && (chr < 'a' || chr > 'z');
-}
-int fileSize(FILE *file, unsigned long *siz)
+int fileSize(FILE *file, long *siz)
 {
     assert(file != NULL && siz != NULL);
 
@@ -17,133 +14,148 @@ int fileSize(FILE *file, unsigned long *siz)
         *siz = -1L;
         return errno;
     }
+
     *siz = ftell(file);
+
     if (*siz == -1L)
-    {
         return errno;
-    }
     if (fseek(file, 0L, SEEK_SET))
-    {
         return errno;
-    }
+
     return 0;
 }
-int readFile(FILE* file, struct TextData* data)
-{
-    if (file == NULL)
-    {
-        return ENOENT;
-    }
-    assert(file != NULL && data != NULL);
 
-    unsigned long siz = 0;
+int readFile(FILE* file, char** bufptr)
+{
+    assert(file != NULL && bufptr != NULL);
+
+    long siz = 0;
     int error = fileSize(file, &siz);
+
     if (error != 0)
     {
-        data->buf = NULL;
+        *bufptr = NULL;
         return error;
     }
-    data->buf = (char*)calloc(siz + 2, sizeof(char));
-    if (data->buf == NULL)
+
+    char* buf = *bufptr = (char*)calloc(siz + 2, sizeof(char));
+    if (buf == NULL)
         return errno;
-    int n_read = fread(data->buf, sizeof(char), siz, file);
+
+    int n_read = fread(buf, sizeof(char), siz, file);
     if (ferror(file))
     {
-        data->buf = NULL;
+        free(buf);
+        *bufptr = NULL;
         return EIO;
     }
-    if (data->buf[n_read - 1] != '\n')
-        data->buf[n_read++] = '\n';
-    data->buf[n_read] = '\0';
+
+    if (buf[n_read - 1] != '\n')
+        buf[n_read++] = '\n';
+    buf[n_read] = '\0';
     return 0;
 }
-void getNLines(struct TextData *data)
-{
-    assert(data != NULL);
 
-    data->n_lines = 0;
-    char* str = data->buf;
-    for (; *str != '\0'; ++str)
+void getNLines(char* buf, int* n_lines)
+{
+    assert(buf != NULL);
+
+    *n_lines = 0;
+    for (; *buf != '\0'; ++buf)
     {
-        if (*str == '\n')
-            data->n_lines++;
+        if (*buf == '\n')
+            (*n_lines)++;
     }
 }
-int getLines(struct TextData *data)
-{
-    assert(data != NULL);
 
-    data->text = (struct String*)calloc(data->n_lines, sizeof(struct String));
-    if (data->text == NULL)
+int getLines(char* buf, int* n_lines, struct String** textptr, int* maxlen)
+{
+    assert(buf != NULL &&n_lines != NULL && textptr != NULL && maxlen != NULL);
+
+    getNLines(buf, n_lines);
+
+    struct String* text = *textptr = (struct String*)calloc(*n_lines, sizeof(struct String));
+    if (text == NULL)
         return errno;
-    char *buf = data->buf;
+
     struct String str = {buf, 0};
-    data->maxlen = 0;
-    for (int i = 0; i != data->n_lines; ++buf)
+    *maxlen = 0;
+
+    for (int i = 0; i != *n_lines; ++buf)
     {
         if (*buf == '\n')
         {
             str.len = buf - str.str;
-            data->maxlen = str.len > data->maxlen ? str.len : data->maxlen;
-            data->text[i++] = str;
+            *maxlen = str.len > *maxlen ? str.len : *maxlen;
+            text[i++] = str;
             str.str = buf + 1;
         }
     }
     return 0;
 }
-int getText(struct TextData *data)
-{
-    assert(data != NULL);
 
-    getNLines(data);
-    return getLines(data);
+void writeLines(FILE* file, struct String* text, int n_lines)
+{
+    assert(file != NULL && text != NULL);
+
+    for (int i = 0; i < n_lines; ++i)
+    {
+        if (text[i].len == 0) continue;
+        fprintf(file, "%.*s\n", text[i].len, text[i].str);
+    }
 }
-void writeLines(FILE* file, struct TextData* data)
+
+void sortAndWrite(FILE* file, struct TextData* data, voidcmp_f cmp)
 {
     assert(file != NULL && data != NULL);
 
-    for (int i = 0; i < data->n_lines; ++i)
-    {
-        if (data->text[i].len == 0) continue;
-        fprintf(file, "%.*s\n", data->text[i].len, data->text[i].str);
-    }
+    myQsort(data->text, data->n_lines, sizeof(struct String), cmp);
+    writeLines(file, data->text, data->n_lines);
+    fprintf(file, "\n%s\n\n", "--------------------------------");
 }
+
 int myStrcmp(const struct String* str1, const struct String* str2)
 {
     assert(str1 != NULL && str2 != NULL);
 
     char *lft = str1->str, *rgt = str2->str;
 
-    while (*lft != '\n' && ispunc(*lft)) ++lft;
-    while (*rgt != '\n' && ispunc(*rgt)) ++rgt;
+    while (*lft != '\n' && !isalnum(*lft)) ++lft;
+    while (*rgt != '\n' && !isalnum(*rgt)) ++rgt;
 
     while (*lft != '\n' && *lft == *rgt)
     {
         ++lft;
         ++rgt;
         
-        while (*lft != '\n' && ispunc(*lft)) ++lft;
-        while (*rgt != '\n' && ispunc(*rgt)) ++rgt;
+        while (*lft != '\n' && !isalnum(*lft)) ++lft;
+        while (*rgt != '\n' && !isalnum(*rgt)) ++rgt;
     }
     return (*lft == '\n' ? '\0' : *lft) - (*rgt == '\n' ? '\0' : *rgt);
 }
+
 int myStrcmpR(const struct String* str1, const struct String* str2)
 {
     assert(str1 != NULL && str2 != NULL);
 
     char *lfte = str1->str - 1, *rghe = str2->str - 1;
     char *lft = lfte + str1->len, *rgt = rghe + str2->len;
-    while (lft != lfte && ispunc(*lft)) --lft;
-    while (rgt != rghe && ispunc(*rgt)) --rgt;
+
+    while (lft != lfte && !isalnum(*lft)) --lft;
+    while (rgt != rghe && !isalnum(*rgt)) --rgt;
+
     while (lft != lfte && rgt != rghe && *lft == *rgt)
     {
         --lft;
         --rgt;
-        while (lft != lfte && ispunc(*lft)) --lft;
-        while (rgt != rghe && ispunc(*rgt)) --rgt;
+
+        while (lft != lfte && !isalnum(*lft)) --lft;
+        while (rgt != rghe && !isalnum(*rgt)) --rgt;
     }
+    
     return (lft == lfte ? '\0' : *lft) - (rgt == rghe ? '\0' : *rgt);
 }
+
 void freeText(struct TextData* data)
 {
     assert(data != NULL);

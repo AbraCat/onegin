@@ -6,7 +6,7 @@
 void swapElem(char* lft, char* rgt, size_t size)
 {
     char tmp = 0;
-    for (int i = 0; i < size; ++i)
+    for (unsigned i = 0; i < size; ++i)
     {
         tmp = lft[i];
         lft[i] = rgt[i];
@@ -18,7 +18,8 @@ void bubbleSort(void* ptr, size_t count, size_t size, voidcmp_f cmp)
 {
     assert(ptr != NULL);
 
-    char *arr = (char*)ptr, tmp = 0;
+    char *arr = (char*)ptr;
+    
     for (int i = count - 2; i >= 0; --i)
     {
         for (int j = 0; j <= i; ++j)

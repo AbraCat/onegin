@@ -6,33 +6,43 @@
 #include <onegin.h>
 #include <options.h>
 
-static int N_OPTS = 4;
-static const char TEST_NAME[] = ".\\txt\\test-input.txt", IN_NAME[] = ".\\txt\\input.txt", OUT_NAME[] = ".\\txt\\output.txt";
+static int n_opts = 4, n_cmps = 2;
+static const char std_test_in_name[] = ".\\txt\\test-input.txt", std_in_name[] = ".\\txt\\input.txt", std_out_name[] = ".\\txt\\output.txt";
 
 int main(int argc, const char* argv[])
 {
-    struct Option opts[] = {{"-h", "--help"}, {"-i", "--input"}, {"-o", "--output"}, {"-r", "--reverse"}};
+    struct Option opts[] = {{"-h", "--help"}, {"-r", "--reverse"}, {"-i", "--input"}, {"-o", "--output"}};
+    handleError(parseOpts(argc, argv, opts, n_opts), NULL, NULL);
 
-    handleError(parseOpts(argc, argv, opts, N_OPTS), NULL, NULL);
+    if (optByName(opts, n_opts, "-h")->trig)
+    {
+        printHelpMsg(stdout);
+        return 0;
+    }
 
-    const char *test_in_name = ".\\txt\\test-input.txt", *in_name = ".\\txt\\input.txt", *out_name = ".\\txt\\output.txt";
-    FILE *fin = fopen(test_in_name, "r"), *fout = fopen(out_name, "w");
+    const char *in_name = optByName(opts, n_opts, "-i")->str_arg, *out_name = optByName(opts, n_opts, "-o")->str_arg;
+    if (in_name == NULL)
+        in_name = std_test_in_name;
+    if (out_name == NULL)
+        out_name = std_out_name;
 
+    FILE *fin = fopen(in_name, "r"), *fout = fopen(out_name, "w");
     if (fin == NULL || fout == NULL)
         handleError(errno, fin, fout);
     
     struct TextData data = {0};
 
-    handleError(readFile(fin, &data), fin, fout);
-    handleError(getText(&data), fin, fout);
+    handleError(readFile(fin, &data.buf), fin, fout);
+    handleError(getLines(data.buf, &data.n_lines, &data.text, &data.maxlen), fin, fout);
 
-    myQsort(data.text, data.n_lines, sizeof(struct String), (voidcmp_f)myStrcmp);
-    writeLines(fout, &data);
-    fprintf(fout, "\n%s\n\n", "--------------------------------");
+    voidcmp_f cmps[] = {(voidcmp_f)myStrcmp, (voidcmp_f)myStrcmpR};
 
-    myQsort(data.text, data.n_lines, sizeof(struct String), (voidcmp_f)myStrcmpR);
-    writeLines(fout, &data);
-    fprintf(fout, "\n%s\n\n", "--------------------------------");
+    if (optByName(opts, n_opts, "-r")->trig)
+        for (int i = n_cmps - 1; i >= 0; --i)
+            sortAndWrite(fout, &data, cmps[i]);
+    else
+        for (int i = 0; i < n_cmps; ++i)
+            sortAndWrite(fout, &data, cmps[i]);
 
     fprintf(fout, "%s", data.buf);
 
