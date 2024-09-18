@@ -1,10 +1,11 @@
+#ifndef ONEGIN_H
+#define ONEGIN_H
+
 #include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
 
 struct String
 {
-    char *s;
+    char *str;
     int len;
 };
 
@@ -15,18 +16,15 @@ struct TextData
     int n_lines, maxlen;
 };
 
-typedef int (*voidcmp_t)(const void*, const void*);
-typedef int (*strcmp_t)(const struct String, const struct String);
+int ispunc(char chr);
+int fileSize(FILE *file, unsigned long *siz);
+int readFile(FILE* file, struct TextData* data);
+void getNLines(struct TextData *data);
+int getLines(struct TextData *data);
+int getText(struct TextData *data);
+void writeLines(FILE* file, struct TextData* data);
+int myStrcmp(const struct String* str1, const struct String* str2);
+int myStrcmpR(const struct String* str1, const struct String* str2);
+void freeText(struct TextData* data);
 
-int ispunc(char c);
-long fileSize(FILE *file, int* error);
-int readFile(FILE* fp, struct TextData* td);
-void getNLines(struct TextData *td);
-int getLines(struct TextData *td);
-int getText(struct TextData *td);
-void bubbleSort(void* ptr, size_t count, size_t size, voidcmp_t cmp);
-void myQsort(void* ptr, size_t count, size_t size, voidcmp_t cmp);
-void writeLines(FILE* fp, struct TextData* td);
-int myStrcmp(const struct String* s1, const struct String* s2);
-int myStrcmpR(const struct String* s1, const struct String* s2);
-void freeText(struct TextData* td);
+#endif //ONEGIN_H
