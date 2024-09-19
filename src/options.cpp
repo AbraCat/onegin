@@ -6,7 +6,29 @@
 #include <sort.h>
 #include <options.h>
 
-void handleError(int error, FILE* file1, FILE* file2)
+void free_resource(struct Resource* resource)
+{
+    if (resource == NULL)
+        return;
+    if (resource->to_close != NULL)
+    {
+        for (int i = 0; i < resource->n_close; ++i)
+        {
+            if (resource->to_close[i] != NULL)
+                fclose(resource->to_close[i]);
+        }
+    }
+    if (resource->to_free != NULL)
+    {
+        for (int i = 0; i < resource->n_free; ++i)
+        {
+            if (resource->to_free[i] != NULL)
+                free(resource->to_free[i]);
+        }
+    }
+}
+
+void handleError(int error, struct Resource* resource)
 {
     if (error)
     {
@@ -15,10 +37,7 @@ void handleError(int error, FILE* file1, FILE* file2)
         if (error == EINVAL)
             printf("(use -h or --help for help message)\n");
 
-        if (file1 != NULL)
-            fclose(file1);
-        if (file2 != NULL)
-            fclose(file2);
+        free_resource(resource);
 
         exit(error);
     }
@@ -52,6 +71,16 @@ void printHelpMsg(FILE* file)
     "-i (--input): input file name", "-o (--output): output file name");
 }
 
+void testOpts(struct Option* opts, int n_opts)
+{
+    struct Option *opt = NULL;
+    for (int j = 0; j < n_opts; ++j)
+    {
+        opt = optByName(opts, n_opts, opts[j].sh_name);
+        printf("option %s trig %d str_arg %s int_arg %d\n", opt->sh_name, opt->trig, opt->str_arg, opt->int_arg);
+    }
+}
+
 int parseOpts(int argc, const char* argv[], struct Option* opts, int n_opts)
 {
     myQsort(opts, n_opts, sizeof(struct Option), (voidcmp_f)optcmp);
@@ -71,8 +100,6 @@ int parseOpts(int argc, const char* argv[], struct Option* opts, int n_opts)
                 if (i == argc - 1 || argv[i + 1][0] == '-')
                 {
                     trig = opts[j].trig = 1;
-                    opts[j].str_arg = NULL;
-                    opts[j].int_arg = 0;
                     break;
                 }
 
@@ -88,8 +115,6 @@ int parseOpts(int argc, const char* argv[], struct Option* opts, int n_opts)
             if (argv[i][opts[j].l_name_len] == '\0')
             {
                 trig = opts[j].trig = 1;
-                opts[j].str_arg = NULL;
-                opts[j].int_arg = 0;
                 break;
             }
 
@@ -104,13 +129,6 @@ int parseOpts(int argc, const char* argv[], struct Option* opts, int n_opts)
         if (!trig)
             return EINVAL;
     }
-    for (int j = 0; j < n_opts; ++j)
-    {
-        if (!opts[j].trig)
-        {
-            opts[j].str_arg = NULL;
-            opts[j].int_arg = 0;
-        }
-    }
+
     return 0;
 }
