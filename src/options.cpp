@@ -6,26 +6,26 @@
 #include <sort.h>
 #include <options.h>
 
-void free_resource(struct Resource* resource)
+void freeResource(struct Resource* resource)
 {
     if (resource == NULL)
         return;
+
     if (resource->to_close != NULL)
-    {
         for (int i = 0; i < resource->n_close; ++i)
-        {
             if (resource->to_close[i] != NULL)
+            {
+                //printf("fclose(): i = %d\n", i);
                 fclose(resource->to_close[i]);
-        }
-    }
+            }
+
     if (resource->to_free != NULL)
-    {
         for (int i = 0; i < resource->n_free; ++i)
-        {
-            if (resource->to_free[i] != NULL)
+            if (resource->to_free[i] != NULL)            
+            {
+                //printf("free(): i = %d\n", i);
                 free(resource->to_free[i]);
-        }
-    }
+            }
 }
 
 void handleError(int error, struct Resource* resource)
@@ -37,7 +37,7 @@ void handleError(int error, struct Resource* resource)
         if (error == EINVAL)
             printf("(use -h or --help for help message)\n");
 
-        free_resource(resource);
+        freeResource(resource);
 
         exit(error);
     }

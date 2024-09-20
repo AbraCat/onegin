@@ -14,7 +14,7 @@ struct Resource
     char** to_free;
 };
 
-void free_resource(struct Resource* resource);
+void freeResource(struct Resource* resource);
 void handleError(int error, struct Resource* resource);
 
 int optcmp(struct Option* opt1, struct Option* opt2);

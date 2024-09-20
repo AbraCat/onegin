@@ -138,22 +138,22 @@ int myStrcmpR(const struct String* str1, const struct String* str2)
 {
     assert(str1 != NULL && str2 != NULL);
 
-    char *lfte = str1->str - 1, *rghe = str2->str - 1;
-    char *lft = lfte + str1->len, *rgt = rghe + str2->len;
+    char *lftend = str1->str - 1, *rghend = str2->str - 1;
+    char *lft = lftend + str1->len, *rgt = rghend + str2->len;
 
-    while (lft != lfte && !isalnum(*lft)) --lft;
-    while (rgt != rghe && !isalnum(*rgt)) --rgt;
+    while (lft != lftend && !isalnum(*lft)) --lft;
+    while (rgt != rghend && !isalnum(*rgt)) --rgt;
 
-    while (lft != lfte && rgt != rghe && *lft == *rgt)
+    while (lft != lftend && rgt != rghend && *lft == *rgt)
     {
         --lft;
         --rgt;
 
-        while (lft != lfte && !isalnum(*lft)) --lft;
-        while (rgt != rghe && !isalnum(*rgt)) --rgt;
+        while (lft != lftend && !isalnum(*lft)) --lft;
+        while (rgt != rghend && !isalnum(*rgt)) --rgt;
     }
     
-    return (lft == lfte ? '\0' : *lft) - (rgt == rghe ? '\0' : *rgt);
+    return (lft == lftend ? '\0' : *lft) - (rgt == rghend ? '\0' : *rgt);
 }
 
 void freeText(struct TextData* data)

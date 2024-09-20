@@ -11,7 +11,9 @@ static const char std_test_in_name[] = ".\\txt\\test-input.txt", std_in_name[] =
 
 int main(int argc, const char* argv[])
 {
-    struct Resource resource = {2, 2, NULL, NULL};
+    FILE* to_close[] = {NULL, NULL};
+    char* to_free[] = {NULL, NULL};
+    struct Resource resource = {2, 2, to_close, to_free};
 
     struct Option opts[] = {{"-h", "--help"}, {"-r", "--reverse"}, {"-i", "--input", std_test_in_name}, {"-o", "--output", std_out_name}};
     handleError(parseOpts(argc, argv, opts, n_opts), &resource);
@@ -25,10 +27,8 @@ int main(int argc, const char* argv[])
     }
 
     const char *in_name = optByName(opts, n_opts, "-i")->str_arg, *out_name = optByName(opts, n_opts, "-o")->str_arg;
-    FILE *fin = fopen(in_name, "r"), *fout = fopen(out_name, "w");
-
-    FILE* to_close[] = {fin, fout};
-    resource.to_close = to_close;
+    FILE* fin = to_close[0] = fopen(in_name, "r");
+    FILE* fout = to_close[1] = fopen(out_name, "w");
 
     if (fin == NULL || fout == NULL)
         handleError(errno, &resource);
@@ -36,8 +36,7 @@ int main(int argc, const char* argv[])
     struct TextData data = {0};
 
     handleError(readFile(fin, &data.buf), &resource);
-    char* to_free[] = {data.buf, NULL};
-    resource.to_free = to_free;
+    to_free[0] = data.buf;
 
     handleError(getLines(data.buf, &data.n_lines, &data.text, &data.maxlen), &resource);
     to_free[1] = (char*)data.text;
@@ -53,6 +52,6 @@ int main(int argc, const char* argv[])
 
     fprintf(fout, "%s", data.buf);
 
-    free_resource(&resource);
+    freeResource(&resource);
     return 0;
 }
